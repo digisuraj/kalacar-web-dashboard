@@ -19,6 +19,7 @@ import { ReviewsSection } from "./reviews-section";
 import { FestivePanel } from "./festive-settings";
 import { InstagramPanel } from "./instagram-settings";
 import { LogoPanel } from "./logo-settings";
+import { TrackingPanel } from "./tracking-settings";
 import { ShopLinkPanel, VisitWebsiteLink, loadShopLink } from "./shop-link";
 import { StoreVisibilityPanel, loadStoreSettings } from "./store-visibility";
 import type { StoreSettings as StoreVisibility } from "./store-visibility";
@@ -912,6 +913,9 @@ function StoreSettings({ onStoreSaved, onShopLinkSaved }: { onStoreSaved: (store
       { key: "products", label: "Products", contains: "Categories, product page content", content: <>
         <CategoriesPanel />
         <ProductPageSettingsPanel part="page" />
+      </> },
+      { key: "marketing", label: "Ads and analytics", contains: "Meta Pixel, Google Ads, Google Analytics", content: <>
+        <TrackingPanel />
       </> },
       { key: "activity", label: "Activity", contains: "Purchase pop-ups, sold count, people viewing", content: <>
         <ProductPageSettingsPanel part="activity" />

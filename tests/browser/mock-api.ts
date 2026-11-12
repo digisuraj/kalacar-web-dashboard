@@ -56,6 +56,9 @@ export async function mockApi(page: Page, over: Partial<ApiState> = {}) {
     if (path === "/api/admin/settings" && request.method() === "PATCH") {
       const body = request.postDataJSON() as { shopLink?: string; instagram?: { show: boolean; username: string }; brand?: LogoState["brand"] };
       if (body.brand) { logoState(state).brand = body.brand; return json(route, { brand: body.brand }); }
+      // The shop keeps only the IDs; this stands in for that.
+      const tracking = (body as { tracking?: { metaPixelId: string; googleTagIds: string } }).tracking;
+      if (tracking) { state.saved.push({ tracking }); return json(route, { tracking: { metaPixelId: tracking.metaPixelId.match(/\d{8,20}/)?.[0] ?? "", googleTagIds: tracking.googleTagIds.toUpperCase().match(/\b(?:GTM|G|AW)-[A-Z0-9]{4,15}\b/g) ?? [] } }); }
       if (body.instagram) {
         if (/[^\w.@]/.test(body.instagram.username)) return json(route, { error: "Enter a valid Instagram username, like kalacar.in" }, 400);
         state.instagram = { show: body.instagram.show, username: body.instagram.username.replace(/^@/, "") };
