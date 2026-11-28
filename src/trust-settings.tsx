@@ -93,7 +93,7 @@ export function TrustSettingsPanel() {
     </fieldset>
 
     <fieldset className="editor-group"><legend>Bag totals</legend>
-      <Check label="Show the trust strip's promises above Checkout" checked={bagTrust.showLine} onChange={showLine => set("bagTrust", { showLine })} />
+      <Check label="Show the trust strip's promises, small, in the bag and at checkout" checked={bagTrust.showLine} onChange={showLine => set("bagTrust", { showLine })} hint="Each with its icon and a green tick after the words: above Proceed to checkout, and above Pay." />
       <Check label="Show the delivery row" checked={bagTrust.delivery.show} onChange={show => setBag("delivery", { show })} />
       <div className="editor-row"><TextField label="Delivery row name" value={bagTrust.delivery.label} max={30} onChange={label => setBag("delivery", { label })} /><TextField label="Delivery row value" value={bagTrust.delivery.value} max={20} onChange={value => setBag("delivery", { value })} /></div>
       <Check label="Show the tax note under the total" checked={bagTrust.taxNote.show} onChange={show => setBag("taxNote", { show })} />
@@ -103,9 +103,8 @@ export function TrustSettingsPanel() {
     </fieldset>
 
     <fieldset className="editor-group"><legend>Checkout</legend>
-      <Check label="Show “Secure checkout” at the top" checked={secureCheckout.show} onChange={show => set("secureCheckout", { show })} />
-      <div className="editor-row"><IconPick value={secureCheckout.icon} onChange={icon => set("secureCheckout", { icon })} /><TextField label="Text" value={secureCheckout.label} max={40} onChange={label => set("secureCheckout", { label })} /></div>
-      <TextField label="Shown when the (i) is tapped" value={secureCheckout.info} max={300} rows={2} onChange={info => set("secureCheckout", { info })} hint="Leave empty to hide the (i)." />
+      <Check label="Large green page title with an icon" checked={secureCheckout.show} onChange={show => set("secureCheckout", { show })} hint="Replaces “SECURE CHECKOUT / Checkout” at the top of the checkout page. Off: the plain “Checkout” title." />
+      <div className="editor-row"><IconPick value={secureCheckout.icon} onChange={icon => set("secureCheckout", { icon })} /><TextField label="Page title" value={secureCheckout.label} max={40} onChange={label => set("secureCheckout", { label })} /></div>
       <Check label="Show the payment box above Pay" checked={paymentBox.show} onChange={show => set("paymentBox", { show })} />
       <div className="editor-row"><IconPick value={paymentBox.icon} onChange={icon => set("paymentBox", { icon })} /><TextField label="Title" value={paymentBox.title} max={60} onChange={title => set("paymentBox", { title })} /></div>
       <TextField label="Payment names" value={paymentBox.marks} max={150} onChange={marks => set("paymentBox", { marks })} hint="Separate with commas. Leave empty to hide them." />

@@ -42,7 +42,7 @@ export type ProductPageContent = {
   deliveryDates: { show: boolean; cutoffHour: number; text: string; note: string };
   buyNow: { label: string; icon: IconName; showMarks: boolean; marks: string };
   bagTrust: { showLine: boolean; delivery: { show: boolean; label: string; value: string }; taxNote: { show: boolean; text: string }; youSave: { show: boolean; text: string } };
-  secureCheckout: { show: boolean; icon: IconName; label: string; info: string };
+  secureCheckout: { show: boolean; icon: IconName; label: string };
   paymentBox: { show: boolean; icon: IconName; title: string; marks: string; note: string };
   payButton: { label: string; icon: IconName };
   whatsappFloat: { show: boolean; label: string; message: string; productMessage: string };
@@ -73,7 +73,7 @@ export const DEFAULT_TRUST: Pick<ProductPageContent, "trustStrip" | "deliveryDat
   deliveryDates: { show: true, cutoffHour: 14, text: "Order today, get it between {from} – {to}.", note: "Exact date depends on your PIN code." },
   buyNow: { label: "Buy now", icon: "secure", showMarks: true, marks: "UPI, GPay, PhonePe, Paytm" },
   bagTrust: { showLine: true, delivery: { show: true, label: "Delivery", value: "FREE" }, taxNote: { show: true, text: "Inclusive of all taxes" }, youSave: { show: true, text: "You save {amount} on this order" } },
-  secureCheckout: { show: true, icon: "secure", label: "Secure checkout", info: "Payments are processed by Razorpay over an encrypted connection. We never see or store your card or UPI details, and we don't sell your information." },
+  secureCheckout: { show: true, icon: "secure", label: "Secure checkout" },
   paymentBox: { show: true, icon: "secure", title: "Pay securely with Razorpay", marks: "UPI, GPay, PhonePe, Paytm, Visa, Mastercard, RuPay", note: "You choose UPI, card or net banking in the next step. All payments are encrypted, and we never see or store your card or UPI details." },
   payButton: { label: "Pay {total} securely", icon: "secure" },
   whatsappFloat: { show: true, label: "Questions? Chat with us", message: "Hi Kalacar, I have a question.", productMessage: "Hi Kalacar, I have a question about {product}." },
